@@ -6,6 +6,7 @@ use Nhytros\Laravel\Readable\Readable;
  * Get Readable Integer Number
  *
  * @param int $input
+ * @optional string $delimeter (default ,)
  * @return string
  **/
 function ReadableNumber(int $input, string $delimiter = ','): string
@@ -17,7 +18,7 @@ function ReadableNumber(int $input, string $delimiter = ','): string
  * Get Readable Social Number
  *
  * @param int|double|float $input
- * @param string $lang
+ * @optional string $lang (default en)
  * @return string
  **/
 function ReadableNumberToString($input, string $lang = 'en'): string
@@ -29,8 +30,8 @@ function ReadableNumberToString($input, string $lang = 'en'): string
  * Get Readable Social Number
  *
  * @param int $input
- * @param bool $showDecimal
- * @param int $decimals
+ * @optional bool $showDecimal (default false)
+ * @optional int $decimals (default 0)
  * @return string
  **/
 function ReadableHumanNumber(int $input, bool $showDecimal = false, int $decimals = 0): string
@@ -42,9 +43,9 @@ function ReadableHumanNumber(int $input, bool $showDecimal = false, int $decimal
  * Get Readable Decimal Number
  *
  * @param int $input
- * @param int $decimals
- * @param string $point
- * @param string $delimiter
+ * @optional int $decimals (default 2)
+ * @optional string $point (default .)
+ * @optional string $delimiter (default ,)
  * @return string
  **/
 function ReadableDecimal($input, int $decimals = 2, string $point = '.', string $delimiter = ','): ?string
@@ -56,9 +57,9 @@ function ReadableDecimal($input, int $decimals = 2, string $point = '.', string 
  * Get Readable ( Decimal Number => Decimal || Integer )
  *
  * @param int $input
- * @param int $decimals_length
- * @param string $point
- * @param string $delimiter
+ * @optional int $decimals_length (default 2)
+ * @optional string $point (default .)
+ * @optional string $delimiter (default ,)
  * @return string
  **/
 function ReadableDecInt($input, int $decimals_length = 2, string $point = '.', string $delimiter = ','): ?string
@@ -72,6 +73,7 @@ function ReadableDecInt($input, int $decimals_length = 2, string $point = '.', s
  * Get Readable Date
  *
  * @param int $input
+ * @optional string $timezone (default null)
  * @return string
  **/
 function ReadableDate($input, string $timezone = null): ?string
@@ -83,11 +85,12 @@ function ReadableDate($input, string $timezone = null): ?string
  * Get Readable Time
  *
  * @param int|Carbon\Carbon $input
- * @param bool $is12
- * @param null|string $timezone
+ * @optional bool $is12 (default false)
+ * @optional bool $hasSeconds (default false)
+ * @optional null|string $timezone (default null)
  * @return string
  **/
-function ReadableTime($input, $is12 = false, bool $hasSeconds = false, string $timezone = null): ?string
+function ReadableTime($input, bool $is12 = false, bool $hasSeconds = false, string $timezone = null): ?string
 {
     return Readable::getTime($input, $is12, $hasSeconds, $timezone);
 }
@@ -96,11 +99,12 @@ function ReadableTime($input, $is12 = false, bool $hasSeconds = false, string $t
  * Get Readable DateTime
  *
  * @param int|Carbon\Carbon $input
- * @param bool $is12
- * @param null|string $timezone
+ * @optional bool $is12 (default false)
+ * @optional bool $hasSeconds (default false)
+ * @optional null|string $timezone (default null)
  * @return string
  **/
-function ReadableDateTime($input, $is12 = false, bool $hasSeconds = false,  string $timezone = null): ?string
+function ReadableDateTime($input, bool $is12 = false, bool $hasSeconds = false,  string $timezone = null): ?string
 {
     return Readable::getDateTime($input, $is12, $hasSeconds, $timezone);
 }
@@ -109,8 +113,8 @@ function ReadableDateTime($input, $is12 = false, bool $hasSeconds = false,  stri
  * Get Readable DateTime
  *
  * @param int|Carbon\Carbon $old
- * @param null|int|Carbon\Carbon $new
- * @param null|string $timezone
+ * @optional null|int|Carbon\Carbon $new (default null)
+ * @optional null|string $timezone (default null)
  * @return string
  **/
 function ReadableDiffDateTime($old, $new = null, string $timezone = null): ?string
@@ -122,8 +126,8 @@ function ReadableDiffDateTime($old, $new = null, string $timezone = null): ?stri
  * Get Readable DateTime Length from Seconds
  *
  * @param int $input
- * @param string $comma
- * @param boolean $short
+ * @optional string $comma (default <space>)
+ * @optional boolean $short (default false)
  * @return string
  **/
 function ReadableTimeLength(int $input, string $comma = ' ', bool $short = false): ?string
@@ -135,9 +139,10 @@ function ReadableTimeLength(int $input, string $comma = ' ', bool $short = false
  * Get Readable DateTime Length from DateTimes
  *
  * @param int|Carbon\Carbon $old
- * @param null|int|Carbon\Carbon $new
- * @param string $comma
- * @param null|string $timezone
+ * @optional null|int|Carbon\Carbon $new (default null)
+ * @optional bool $full (default false)
+ * @optional string $comma (default <space>)
+ * @optional null|string $timezone (default null)
  * @return string
  **/
 function ReadableDateTimeLength($old, $new = null, bool $full = false, string $comma = ' ', string $timezone = null): ?string
@@ -151,6 +156,7 @@ function ReadableDateTimeLength($old, $new = null, bool $full = false, string $c
  * Get Readable File Size
  *
  * @param int $bytes
+ * @optional bool $decimal (default true)
  * @return string
  **/
 function ReadableSize(int $bytes, bool $decimal = true): ?string
